@@ -13,7 +13,8 @@ class form extends Controller
         $pesan = [
             'required'  => 'Harap isi data diatas',
             'alpha'     => 'Data di atas hanya bisa di isi menggunakan nama',
-            'regex'     => 'Data hanya bisa diisi dengan huruf'
+            'regex'     => 'Data hanya bisa diisi dengan huruf',
+            'unique'    => 'Kamu sudah tercatat dalam database'
         ];
 
         $this->validate($req, [

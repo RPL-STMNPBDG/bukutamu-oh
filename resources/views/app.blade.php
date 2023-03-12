@@ -8,21 +8,27 @@
     </head>
     <body oncontextmenu="return false" class="h-screen w-screen select-none flex flex-col scroll-smooth overflow-y-auto scrollbar-thin scrollbar-h-1.5 scrollbar-thumb-yellow-500 scrollbar-track-transparent scrollbar-thumb-rounded-full">
         @yield('content')
+        <footer class="absolute bottom-0 w-full flex justify-center bg-black bg-opacity-25">
+            <p class="text-amber-400 text-opacity-75">©2023 Rekayasa Perangkat Lunak. All Rights Reserved.</p>
+        </footer>
     </body>
     <script>
-        const modal = document.getElementById('myModal');
-        const btn = document.getElementById('myBtn'); // Ambil tombol yang membuka modal
-        const closeBtn = document.querySelector('.close'); // Ambil tombol close pada modal
+        function modalShow() {
+            var nama = document.getElementById('nama').value;
+            var alamat = document.getElementById('alamat').value;
 
-        // Ketika tombol dibuka diklik, tampilkan modal
-        btn.addEventListener('click', function() {
-            modal.classList.remove('hidden');
-        });
+            if (nama.trim() == '' || alamat.trim() == '') {
+                return;
+            }
 
-        // Ketika tombol close pada modal diklik, sembunyikan modal
-        closeBtn.addEventListener('click', function() {
-            modal.classList.add('hidden');
-        });
+            document.getElementById('modal').classList.remove('hidden');
+            document.getElementById('modal').classList.add('flex');
+
+            setTimeout(function(){
+                document.getElementById('modal').classList.remove('flex');
+                document.getElementById('modal').classList.add('hidden');
+            }, 3000);
+        }
     </script>
     <script>
         document.addEventListener('keydown', function(event) {
@@ -34,7 +40,7 @@
             event.preventDefault();
         }
 
-        else if(event.ctrlKey && (event.key === '=' || event.key === '-' || event.key === 'u')) {
+        else if(event.ctrlKey && (event.key === '=' || event.key === '-' || (event.keyCode >= 85 && event.keyCode <= 87))) {
             event.preventDefault();
         }
     });
